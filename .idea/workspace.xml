@@ -2,9 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ced04834-a6cd-4e59-a3f9-ecc24ae92245" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kek.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cahce" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/.gradle/4.10.3/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/.gradle/4.10.3/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/.gradle/4.10.3/taskHistory/taskHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/.gradle/4.10.3/taskHistory/taskHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/src/main/java/kek.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cahce" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -49,7 +70,7 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kek.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
@@ -58,6 +79,15 @@
                 <element signature="e#62#63#0" expanded="true" />
                 <element signature="e#92#93#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="239">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
@@ -72,12 +102,13 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/kek.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -104,11 +135,6 @@
             <path>
               <item name="cache" type="b2602c69:ProjectViewProjectNode" />
               <item name="cache" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="cahce" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cache" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cache" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -116,13 +142,6 @@
               <item name="cache" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="cache" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cache" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -212,6 +231,13 @@
             <element signature="e#62#63#0" expanded="true" />
             <element signature="e#92#93#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
