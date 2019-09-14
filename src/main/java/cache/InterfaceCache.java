@@ -1,8 +1,9 @@
 package cache;
 
-public interface InterfaceCache
-{
-  public void put (Object o);
 
-  public Object get (Object o);
+public interface InterfaceCache<K,V>
+{
+  void put (K key,V value);
+
+  V get (K key);
 }
