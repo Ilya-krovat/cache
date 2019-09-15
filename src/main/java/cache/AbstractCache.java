@@ -1,7 +1,7 @@
 package cache;
 
 import data.Data;
-import defaultOptions.DefaultOptions;
+import defaultOptions.Options;
 
 import java.util.*;
 
@@ -11,10 +11,10 @@ public abstract class AbstractCache implements Cache
   private Integer checkPeriod;
   private Integer lifeTime;
 
-  public AbstractCache(DefaultOptions defaultOptions)
+  public AbstractCache(Options options)
   {
-    this.checkPeriod = defaultOptions.gerCheckPeriod();
-    this.lifeTime = defaultOptions.getLifeTime();
+    this.checkPeriod = options.gerCheckPeriod();
+    this.lifeTime = options.getLifeTime();
 
     startCache();
   }
@@ -60,6 +60,7 @@ public abstract class AbstractCache implements Cache
         }
         catch (InterruptedException e)
         {
+          // do nothing
         }
       }
     };

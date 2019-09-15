@@ -2,8 +2,8 @@ package testCache;
 
 import cache.AbstractCache;
 import cache.Cache;
-import cache.MyCache;
-import defaultOptions.DefaultOptions;
+import cache.MemoryCache;
+import defaultOptions.Options;
 import junit.framework.TestCase;
 
 import java.util.Map;
@@ -13,7 +13,7 @@ public class TestCache extends TestCase
 {
   public void testCacheCreate()
   {
-    AbstractCache cache = new MyCache(new DefaultOptions());
+    AbstractCache cache = new MemoryCache(new Options());
     String testStr = "test";
     cache.put("123", testStr);
     assertNotNull(cache.get("123"));
@@ -25,7 +25,7 @@ public class TestCache extends TestCase
 
   public void testCacheKeeping() throws Exception
   {
-    AbstractCache cache = new MyCache(new DefaultOptions());
+    AbstractCache cache = new MemoryCache(new Options());
     String testStr = "test";
     cache.put("123", testStr);
 
@@ -40,7 +40,7 @@ public class TestCache extends TestCase
 
   public void testCacheCleaning() throws Exception
   {
-    Cache cache = new MyCache(new DefaultOptions());
+    Cache cache = new MemoryCache(new Options());
 
     String testStr = "test";
     cache.put("123", testStr);

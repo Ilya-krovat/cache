@@ -1,15 +1,9 @@
 package defaultOptions;
 
-public class DefaultOptions
+public class Options
 {
-  private static final Integer MEMORY_CAPACITY = 1000;
   private static final Integer DATA_LIFETIME = 1000;
   private static final Integer CHECK_PERIOD = 100;
-
-  public Integer getMemory()
-  {
-    return MEMORY_CAPACITY;
-  }
 
   public Integer getLifeTime()
   {
