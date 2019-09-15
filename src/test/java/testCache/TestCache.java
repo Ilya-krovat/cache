@@ -1,6 +1,7 @@
 package testCache;
 
 import cache.AbstractCache;
+import cache.Cache;
 import cache.MyCache;
 import defaultOptions.DefaultOptions;
 import junit.framework.TestCase;
@@ -39,7 +40,8 @@ public class TestCache extends TestCase
 
   public void testCacheCleaning() throws Exception
   {
-    AbstractCache cache = new MyCache(new DefaultOptions());
+    Cache cache = new MyCache(new DefaultOptions());
+
     String testStr = "test";
     cache.put("123", testStr);
 
@@ -47,7 +49,7 @@ public class TestCache extends TestCase
     cache.put("1234", testInt);
 
     Map<String,Integer> map = new TreeMap<>();
-    map.put("123",1234);
+    map.put("1236",1234);
     cache.put("map",map);
 
     Thread.sleep(2000);

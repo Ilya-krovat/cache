@@ -5,7 +5,7 @@ import defaultOptions.DefaultOptions;
 
 import java.util.*;
 
-public abstract class AbstractCache implements InterfaceCache
+public abstract class AbstractCache implements Cache
 {
   private Map<Object,Data> cache = new LinkedHashMap<>();
   private Integer checkPeriod;
@@ -28,7 +28,14 @@ public abstract class AbstractCache implements InterfaceCache
   @Override
   public Object get(Object key)
   {
-    return cache.get(key);
+    try
+    {
+      return cache.get(key).getData();
+    }
+    catch (NullPointerException e)
+    {
+      return null;
+    }
   }
 
   private void startCache()

@@ -1,7 +1,7 @@
 package cache;
 
 
-public interface InterfaceCache<K,V>
+public interface Cache<K,V>
 {
   void put (K key,V value);
 
