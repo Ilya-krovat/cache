@@ -10,13 +10,28 @@ public abstract class AbstractCache implements Cache
   private Map<Object,Data> cache = new LinkedHashMap<>();
   private Integer checkPeriod;
   private Integer lifeTime;
+  private Integer cacheCapacity;
 
   public AbstractCache(Options options)
   {
     this.checkPeriod = options.gerCheckPeriod();
     this.lifeTime = options.getLifeTime();
+    this.cacheCapacity = options.getCacheCapacity();
 
     startCache();
+  }
+
+  @Override
+  public Integer size()
+  {
+    try
+    {
+      return cache.size();
+    }
+    catch (NullPointerException o)
+    {
+      return 0;
+    }
   }
 
   @Override
@@ -50,6 +65,8 @@ public abstract class AbstractCache implements Cache
         while (itr.hasNext() && flag)
         {
           if (itr.next().getCreateDate().getTime() + lifeTime < currentTime.getTime())
+            itr.remove();
+          else if(cache.size()>cacheCapacity)
             itr.remove();
           else
             flag = false;
