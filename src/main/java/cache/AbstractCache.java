@@ -57,7 +57,8 @@ public abstract class AbstractCache implements Cache
   {
     Runnable task = () ->
     {
-      while (true)
+      boolean flag1=true;
+      while (flag1)
       {
         Date currentTime = new Date();
         Iterator<Data> itr = cache.values().iterator();
@@ -77,7 +78,7 @@ public abstract class AbstractCache implements Cache
         }
         catch (InterruptedException e)
         {
-          // do nothing
+          flag1=false;
         }
       }
     };

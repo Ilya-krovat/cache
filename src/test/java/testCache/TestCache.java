@@ -14,23 +14,19 @@ public class TestCache extends TestCase
   public void testCacheCreate()
   {
     AbstractCache cache = new MemoryCache(new Options());
-    String testStr = "test";
-    cache.put("123", testStr);
+    cache.put("123", "Str1");
     assertNotNull(cache.get("123"));
 
-    Integer testInt = 1234;
-    cache.put("1234", testInt);
+    cache.put("1234", 435);
     assertNotNull(cache.get("1234"));
   }
 
   public void testCacheKeeping() throws Exception
   {
     AbstractCache cache = new MemoryCache(new Options());
-    String testStr = "test";
-    cache.put("123", testStr);
+    cache.put("123", "Str1");
 
-    Integer testInt = 1234;
-    cache.put("1234", testInt);
+    cache.put("1234", 532);
 
     Thread.sleep(200);
 
@@ -42,11 +38,9 @@ public class TestCache extends TestCase
   {
     Cache cache = new MemoryCache(new Options());
 
-    String testStr = "test";
-    cache.put("123", testStr);
+    cache.put("123", "testStr");
 
-    Integer testInt = 1234;
-    cache.put("1234", testInt);
+    cache.put("1234", 123654);
 
     Map<String, Integer> map = new TreeMap<>();
     map.put("1236", 1234);
@@ -70,20 +64,15 @@ public class TestCache extends TestCase
       }
     });
 
-    String testStr1 = "test";
-    cache.put("123", testStr1);
+    cache.put("123", "test");
 
-    Integer testInt = 1234;
-    cache.put("1234", testInt);
+    cache.put("1234", 445);
 
-    String testStr2 = "test";
-    cache.put("1235", testStr2);
+    cache.put("1235", "Str1");
 
-    String testStr3 = "test";
-    cache.put("1236", testStr3);
+    cache.put("1236", "Str2");
 
-    String testStr4 = "test";
-    cache.put("12366", testStr4);
+    cache.put("12366", "Str3");
 
     Thread.sleep(200);
     assertEquals(Integer.valueOf(3), cache.size());
