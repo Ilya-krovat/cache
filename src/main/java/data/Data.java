@@ -15,7 +15,7 @@ public class Data<D>
     this.createDate = new Date();
     this.lastUseDate = new Date();
     this.numberOfUses = 0;
-  }
+}
 
   public D getData()
   {

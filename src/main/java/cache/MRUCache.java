@@ -2,7 +2,7 @@ package cache;
 
 import defaultOptions.Options;
 
-public class MRUCache extends AbstractCache
+public class MRUCache<V> extends AbstractCache<V>
 {
   public MRUCache(Options options)
   {

@@ -2,7 +2,7 @@ package cache;
 
 import defaultOptions.Options;
 
-public class LRUCache extends AbstractCache
+public class LRUCache<V> extends AbstractCache<V>
 {
   public LRUCache(Options options)
   {

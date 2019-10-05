@@ -11,7 +11,7 @@ public class TestCache extends TestCase
 {
   public void testCacheCreate()
   {
-    Cache cache = new MemoryCache(new Options()
+    Cache<Object> cache = new MemoryCache<>(new Options()
     {
       @Override
       public Integer getLifeTime()
@@ -28,7 +28,7 @@ public class TestCache extends TestCase
 
   public void testCacheKeeping() throws Exception
   {
-    Cache cache = new MemoryCache(new Options()
+    Cache<Object> cache = new MemoryCache<>(new Options()
     {
       @Override
       public Integer getLifeTime()
@@ -49,7 +49,7 @@ public class TestCache extends TestCase
 
   public void testCacheCleaning() throws Exception
   {
-    Cache cache = new MemoryCache(new Options()
+    Cache<Object> cache = new MemoryCache<>(new Options()
     {
       @Override
       public Integer getLifeTime()
@@ -74,7 +74,7 @@ public class TestCache extends TestCase
 
   public void testCapacity() throws Exception
   {
-    Cache cache = new MemoryCache(new Options()
+    Cache<Object> cache = new MemoryCache<>(new Options()
     {
       @Override
       public Integer getCacheCapacity()
@@ -105,7 +105,7 @@ public class TestCache extends TestCase
 
   public void testLRUCache() throws Exception
   {
-    Cache cache = new LRUCache(new Options()
+    Cache<Object> cache = new LRUCache<>(new Options()
     {
       @Override
       public Integer getCacheCapacity()
@@ -140,7 +140,7 @@ public class TestCache extends TestCase
 
   public void testMRUCache() throws Exception
   {
-    Cache cache = new MRUCache(new Options()
+    Cache<Object> cache = new MRUCache<>(new Options()
     {
       @Override
       public Integer getCacheCapacity()
@@ -176,7 +176,7 @@ public class TestCache extends TestCase
 
   public void testLFUCache() throws Exception
   {
-    Cache cache = new LFUCache(new Options()
+    Cache<Object> cache = new LFUCache<>(new Options()
     {
       @Override
       public Integer getCacheCapacity()

@@ -2,7 +2,7 @@ package cache;
 
 import defaultOptions.Options;
 
-public class LFUCache extends AbstractCache
+public class LFUCache<V> extends AbstractCache<V>
 {
   public LFUCache(Options options)
   {

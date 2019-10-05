@@ -9,10 +9,10 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class MemoryCache implements Cache
+public class MemoryCache<V> implements Cache<V>
 {
 
-  private Map<String, Data> cache = new LinkedHashMap<>();
+  private Map<String, Data<V>> cache = new LinkedHashMap<>();
   private Integer checkPeriod;
   private Integer lifeTime;
   private Integer cacheCapacity;
@@ -40,13 +40,13 @@ public class MemoryCache implements Cache
   }
 
   @Override
-  public void put(String key, Object value)
+  public void put(String key, V value)
   {
     cache.put(key, new Data<>(value));
   }
 
   @Override
-  public Object get(String key)
+  public V get(String key)
   {
     try
     {
@@ -83,7 +83,7 @@ public class MemoryCache implements Cache
   private void caching()
   {
     Date currentTime = new Date();
-    Iterator<Data> itr = cache.values().iterator();
+    Iterator<Data<V>> itr = cache.values().iterator();
     boolean flag = true;
     while (itr.hasNext() && flag)
     {

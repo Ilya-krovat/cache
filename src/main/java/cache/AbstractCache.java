@@ -7,9 +7,9 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public abstract class AbstractCache implements Cache
+public abstract class AbstractCache<V> implements Cache<V>
 {
-  Map<String, Data> cache = new LinkedHashMap<>();
+  Map<String, Data<V>> cache = new LinkedHashMap<>();
   private Integer cacheCapacity;
 
   String mostInappropriateKey;
@@ -34,7 +34,7 @@ public abstract class AbstractCache implements Cache
   }
 
   @Override
-  public Object get(String key)
+  public V get(String key)
   {
     try
     {
@@ -48,7 +48,7 @@ public abstract class AbstractCache implements Cache
   }
 
   @Override
-  public void put(String key, Object value)
+  public void put(String key, V value)
   {
     cacheCapacity--;
     caching();
