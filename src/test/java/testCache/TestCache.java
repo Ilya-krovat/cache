@@ -1,8 +1,6 @@
 package testCache;
 
-import cache.AbstractCache;
-import cache.Cache;
-import cache.MemoryCache;
+import cache.*;
 import defaultOptions.Options;
 import junit.framework.TestCase;
 
@@ -13,8 +11,15 @@ public class TestCache extends TestCase
 {
   public void testCacheCreate()
   {
-    AbstractCache cache = new MemoryCache(new Options());
-    cache.put("123", "Str1");
+    Cache cache = new MemoryCache(new Options()
+    {
+      @Override
+      public Integer getLifeTime()
+      {
+        return 1000;
+      }
+    });
+    cache.put("123",  "Str1");
     assertNotNull(cache.get("123"));
 
     cache.put("1234", 435);
@@ -23,7 +28,15 @@ public class TestCache extends TestCase
 
   public void testCacheKeeping() throws Exception
   {
-    AbstractCache cache = new MemoryCache(new Options());
+    Cache cache = new MemoryCache(new Options()
+    {
+      @Override
+      public Integer getLifeTime()
+      {
+        return 1000;
+      }
+    });
+
     cache.put("123", "Str1");
 
     cache.put("1234", 532);
@@ -36,8 +49,14 @@ public class TestCache extends TestCase
 
   public void testCacheCleaning() throws Exception
   {
-    Cache cache = new MemoryCache(new Options());
-
+    Cache cache = new MemoryCache(new Options()
+    {
+      @Override
+      public Integer getLifeTime()
+      {
+        return 1000;
+      }
+    });
     cache.put("123", "testStr");
 
     cache.put("1234", 123654);
@@ -62,6 +81,12 @@ public class TestCache extends TestCase
       {
         return 3;
       }
+
+      @Override
+      public Integer getLifeTime()
+      {
+        return 1000;
+      }
     });
 
     cache.put("123", "test");
@@ -76,6 +101,115 @@ public class TestCache extends TestCase
 
     Thread.sleep(200);
     assertEquals(Integer.valueOf(3), cache.size());
+  }
+
+  public void testLRUCache() throws Exception
+  {
+    Cache cache = new LRUCache(new Options()
+    {
+      @Override
+      public Integer getCacheCapacity()
+      {
+        return 3;
+      }
+    });
+
+    cache.put("String", "Hello");
+    cache.put("Int", 1999);
+    cache.put("test", "krgj");
+
+    Thread.sleep(500);
+
+    cache.get("Int");
+    cache.get("String");
+
+    Thread.sleep(500);
+
+    cache.put("NewString", "World");
+
+    Thread.sleep(500);
+
+    assertEquals(Integer.valueOf(3), cache.size());
+
+    assertNotNull(cache.get("Int"));
+    assertNotNull(cache.get("String"));
+    assertNotNull(cache.get("NewString"));
+
+    assertNull(cache.get("test"));
+  }
+
+  public void testMRUCache() throws Exception
+  {
+    Cache cache = new MRUCache(new Options()
+    {
+      @Override
+      public Integer getCacheCapacity()
+      {
+        return 3;
+      }
+    });
+
+    cache.put("String", "Hello");
+    cache.put("Int", 1999);
+    cache.put("test", "krgj");
+
+    Thread.sleep(500);
+
+    cache.get("Int");
+
+    Thread.sleep(500);
+
+    cache.get("String");
+
+    cache.put("NewString", "World");
+
+    Thread.sleep(500);
+
+    assertEquals(Integer.valueOf(3), cache.size());
+
+    assertNotNull(cache.get("Int"));
+    assertNotNull(cache.get("test"));
+    assertNotNull(cache.get("NewString"));
+
+    assertNull(cache.get("String"));
+  }
+
+  public void testLFUCache() throws Exception
+  {
+    Cache cache = new LFUCache(new Options()
+    {
+      @Override
+      public Integer getCacheCapacity()
+      {
+        return 3;
+      }
+    });
+
+    cache.put("String", "Hello");
+
+    cache.put("Int", 1999);
+    cache.put("test", "krgj");
+
+    Thread.sleep(500);
+
+    cache.get("Int");
+    cache.get("Int");
+
+    cache.get("String");
+
+    Thread.sleep(500);
+
+    cache.put("NewString", "World");
+
+    Thread.sleep(500);
+
+    assertEquals(Integer.valueOf(3), cache.size());
+
+    assertNotNull(cache.get("Int"));
+    assertNotNull(cache.get("NewString"));
+    assertNotNull(cache.get("String"));
+
+    assertNull(cache.get("test"));
   }
 
   @Override

@@ -3,22 +3,21 @@ package cache;
 import data.Data;
 import defaultOptions.Options;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public abstract class AbstractCache implements Cache
 {
-  private Map<Object,Data> cache = new LinkedHashMap<>();
-  private Integer checkPeriod;
-  private Integer lifeTime;
+  Map<String, Data> cache = new LinkedHashMap<>();
   private Integer cacheCapacity;
 
-  public AbstractCache(Options options)
-  {
-    this.checkPeriod = options.gerCheckPeriod();
-    this.lifeTime = options.getLifeTime();
-    this.cacheCapacity = options.getCacheCapacity();
+  String mostInappropriateKey;
+  String actualKey;
 
-    startCache();
+  AbstractCache(Options options)
+  {
+    this.cacheCapacity = options.getCacheCapacity();
   }
 
   @Override
@@ -28,23 +27,18 @@ public abstract class AbstractCache implements Cache
     {
       return cache.size();
     }
-    catch (NullPointerException o)
+    catch (NullPointerException e)
     {
       return 0;
     }
   }
 
   @Override
-  public void put(Object key, Object value)
-  {
-    cache.put(key, new Data(value));
-  }
-
-  @Override
-  public Object get(Object key)
+  public Object get(String key)
   {
     try
     {
+      cache.get(key).updateData();
       return cache.get(key).getData();
     }
     catch (NullPointerException e)
@@ -53,36 +47,30 @@ public abstract class AbstractCache implements Cache
     }
   }
 
-  private void startCache()
+  @Override
+  public void put(String key, Object value)
   {
-    Runnable task = () ->
-    {
-      boolean flag1=true;
-      while (flag1)
-      {
-        Date currentTime = new Date();
-        Iterator<Data> itr = cache.values().iterator();
-        boolean flag = true;
-        while (itr.hasNext() && flag)
-        {
-          if (itr.next().getCreateDate().getTime() + lifeTime < currentTime.getTime())
-            itr.remove();
-          else if(cache.size()>cacheCapacity)
-            itr.remove();
-          else
-            flag = false;
-        }
-        try
-        {
-          Thread.currentThread().sleep(checkPeriod);
-        }
-        catch (InterruptedException e)
-        {
-          flag1=false;
-        }
-      }
-    };
-    Thread thread = new Thread(task);
-    thread.start();
+    cacheCapacity--;
+    caching();
+    cacheCapacity++;
+    cache.put(key, new Data<>(value));
   }
+
+  private void caching()
+  {
+    while (cache.size() > cacheCapacity)
+    {
+      Iterator<String> itr = cache.keySet().iterator();
+      mostInappropriateKey = cache.keySet().iterator().next();
+      while (itr.hasNext())
+      {
+        actualKey = itr.next();
+        if (elementsComparison())
+          mostInappropriateKey = actualKey;
+      }
+      cache.remove(mostInappropriateKey);
+    }
+  }
+
+  abstract boolean elementsComparison();
 }
